@@ -1,0 +1,17 @@
+/* styles.css */
+
+::ng-deep body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #281C2D; /* Ebony */
+    color: #ddd; /* Cinza claro */
+  }
+  
+  ::ng-deep h1, ::ng-deep h2, ::ng-deep h3, ::ng-deep h4, ::ng-deep h5, ::ng-deep h6 {
+    font-family: 'Montserrat', sans-serif;
+    color: #BEAFC2; /* Purple Haze */
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+  }

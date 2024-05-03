@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-6 card">
+        <h2>Enunciado</h2>
+        <p>{{ exercicio?.enunciado }}</p>
+        <p style="font-weight: bolder; font-size: small;">Notas: {{ exercicio?.notas }}</p>
+      </div>
+      <div class="col-md-6 card code-container">
+        <h2>Código</h2>
+        <div #editor class="editor"></div>
+        <button (click)="runCodigo()">Run</button>
+      </div>
+    </div>
+  </div>
+  

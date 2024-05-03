@@ -1,0 +1,68 @@
+.card {
+  background-color: #695E93;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px;
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.code-container {
+}
+
+.editor {
+  font-family: 'Courier New', monospace;
+  color: #ddd;
+  background-color: #1E1E1E; /* Cor de fundo semelhante ao VSCode */
+  border: none; /* Removendo a borda padrão */
+  padding: 10px; /* Adicionando um preenchimento interno */
+  width: 100%; /* Definindo a largura para preencher o contêiner */
+  height: 300px; /* Altura fixa para a área de código */
+  resize: none; /* Impedindo que o usuário redimensione */
+  border-radius: 5px; /* Adicionando bordas arredondadas */
+  box-sizing: border-box; /* Incluindo o preenchimento e a borda na largura total */
+  outline: none; /* Removendo a borda de foco */
+  scrollbar-width: thin; /* Adicionando uma barra de rolagem fina */
+  scrollbar-color: #333 #1E1E1E; /* Cor da barra de rolagem */
+}
+
+/* Realce de sintaxe simples (apenas para ilustração) */
+.editor {
+  border-left: 3px solid #4CAF50; /* Cor da borda para indicar realce de sintaxe */
+}
+
+.code-container:before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  right: 0;
+  border-width: 0 20px 20px 0;
+  border-color: transparent #695E93 transparent transparent;
+  border-style: solid;
+}
+
+.container {
+  margin-top: 20px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.col-md-6 {
+  width: 48%;
+}
+
+h2 {
+  margin-bottom: 10px;
+}
+
+textarea {
+  width: 100%;
+  height: 300px;
+}
