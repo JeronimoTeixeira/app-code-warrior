@@ -22,11 +22,11 @@ export class ExercicioService {
     {
       "id": 2,
       "enunciado": "Desenvolva uma função chamada ehPalindromo que verifica se uma palavra ou frase é um palíndromo (ou seja, pode ser lida da mesma forma de trás para frente, desconsiderando espaços, pontuações e maiúsculas).",
-      "nomeFuncao": "calculadora",
+      "nomeFuncao": "ehPalindromo",
       "exemplos": [
-        {"entrada": "'arara'", "saida": "true"},
-        {"entrada": "'A base do teto desaba'", "saida": "true"},
-        {"entrada": "'OpenAI'", "saida": "false"}
+        {"entrada": "('arara')", "saida": "true"},
+        {"entrada": "('A base do teto desaba')", "saida": "true"},
+        {"entrada": "('OpenAI')", "saida": "false"}
       ],
       "notas": "Considere remover espaços e converter para minúsculas antes de fazer a verificação."
     },
@@ -35,8 +35,8 @@ export class ExercicioService {
       "enunciado": "Escreva uma função chamada contaVogais que recebe uma string e retorna o número de vogais presentes nela.",
       "nomeFuncao": "calculadora",
       "exemplos": [
-        {"entrada": "'hello'", "saida": "2"},
-        {"entrada": "'why'", "saida": "0"}
+        {"entrada": "('hello')", "saida": "2"},
+        {"entrada": "('why')", "saida": "0"}
       ],
       "notas": "Considere as vogais 'a', 'e', 'i', 'o', 'u' tanto em minúsculas quanto em maiúsculas."
     },
@@ -45,9 +45,9 @@ export class ExercicioService {
       "enunciado": "Crie uma função chamada celsiusParaFahrenheit que converte uma temperatura em Celsius para Fahrenheit utilizando a fórmula F = C * 9/5 + 32.",
       "nomeFuncao": "calculadora",
       "exemplos": [
-        {"entrada": "0", "saida": "32"},
-        {"entrada": "-30", "saida": "22"},
-        {"entrada": "100", "saida": "212"}
+        {"entrada": "(0)", "saida": "32"},
+        {"entrada": "(-30)", "saida": "22"},
+        {"entrada": "(100)", "saida": "212"}
       ],
       "notas": "Use operações aritméticas básicas para realizar a conversão."
     },

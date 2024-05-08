@@ -1,15 +1,35 @@
 <div class="container">
-    <div class="row">
+    <div class="container-full">
       <div class="col-md-6 card">
         <h2>Enunciado</h2>
         <p>{{ exercicio?.enunciado }}</p>
         <p style="font-weight: bolder; font-size: small;">Notas: {{ exercicio?.notas }}</p>
       </div>
-      <div class="col-md-6 card code-container">
-        <h2>Código</h2>
-        <div #editor class="editor"></div>
-        <button (click)="runCodigo()">Run</button>
+      <div class="col-md-6 card container-column" [style.display]="!exibeLoading && !exibePontuacao && !exibeException ? 'block' : 'none'">
+        <h2 class="row">Código</h2>
+        <div #editor class="editor row"></div>
+        <button class="button" (click)="runCodigo()">Run</button>
+      </div>
+      <div class="col-md-6 card container-center" *ngIf="exibeLoading">
+        <app-loading></app-loading>
+      </div>
+      <div class="col-md-6 card container-column container-center" *ngIf="exibePontuacao">
+        <h2>Resultado</h2>
+        <p>Você conseguiu atingir o pontuacao de</p>
+        <h1 class="container">{{ percentualPontuacao }}%</h1>
+        <button class="button" (click)="tentarNovamente()">Tente Novamente</button>
+      </div>
+      <div class="col-md-6 card container-column container-center" *ngIf="exibeException">
+        <h2>Resultado</h2>
+        <p>Que pena! Ao rodar seu codigo ocorreu a exception abaixo:</p>
+        <p>{{ exception }}</p>
+        <button class="button" (click)="tentarNovamente()">Tente Novamente</button>
       </div>
     </div>
-  </div>
+</div>
   
+<div class="container">
+  
+  <button class="button-page" *ngIf="exercicio?.id != 1">< Voltar</button>
+  <button class="button-page" (click)="proximaQuestao()">Proxima ></button>
+</div>

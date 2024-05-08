@@ -1,3 +1,20 @@
+.button{
+  background-color: #302261;
+  margin-top: 10px;
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+
+  &-page{
+    @extend .button;
+    background-color: #5c4e96;
+    font-size: large;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+
 .card {
   background-color: #695E93;
   border-radius: 10px;
@@ -21,7 +38,7 @@
   border: none; /* Removendo a borda padrão */
   padding: 10px; /* Adicionando um preenchimento interno */
   width: 100%; /* Definindo a largura para preencher o contêiner */
-  height: 300px; /* Altura fixa para a área de código */
+  height: 250px; /* Altura fixa para a área de código */
   resize: none; /* Impedindo que o usuário redimensione */
   border-radius: 5px; /* Adicionando bordas arredondadas */
   box-sizing: border-box; /* Incluindo o preenchimento e a borda na largura total */
@@ -30,9 +47,8 @@
   scrollbar-color: #333 #1E1E1E; /* Cor da barra de rolagem */
 }
 
-/* Realce de sintaxe simples (apenas para ilustração) */
 .editor {
-  border-left: 3px solid #4CAF50; /* Cor da borda para indicar realce de sintaxe */
+  border-left: 3px solid #4CAF50;
 }
 
 .code-container:before {
@@ -46,16 +62,49 @@
 }
 
 .container {
-  margin-top: 20px;
+  display: flex;
+  margin-top: 10px;
+  &-column{
+    @extend .container;
+    flex-direction: column;
+  }
+
+  &-center{
+    @extend .container;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &-space-between{
+    @extend .container;
+    justify-content: space-between;
+  }
+
+  &-full{
+    
+    @extend .container;
+    width: 100%;
+  }
 }
 
 .row {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.column{
+  width: 100%;
   display: flex;
   justify-content: space-between;
 }
 
 .col-md-6 {
   width: 48%;
+}
+
+.margin-10{
+  margin: 10px;
 }
 
 h2 {

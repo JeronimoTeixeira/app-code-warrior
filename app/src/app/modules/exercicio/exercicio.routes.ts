@@ -5,5 +5,5 @@ export const exercicioRoutes: Route[] = [
     {
         path: ':idExercicio',
         component: ExercicioComponent
-     }
+    }
 ];
