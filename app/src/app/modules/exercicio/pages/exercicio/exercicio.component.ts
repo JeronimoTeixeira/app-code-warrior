@@ -1,11 +1,9 @@
-import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ExercicioService } from '../../services/exercicio.service';
 import { IExercicio } from 'src/app/modules/shared/interfaces/exercicio.interface';
 import { ActivatedRoute, Router } from '@angular/router';
-
-import { EditorView , minimalSetup} from 'codemirror';
-import { javascript } from "@codemirror/lang-javascript"
+import { IRuntime } from 'src/app/modules/shared/interfaces/runtime.interface';
 
 @Component({
   selector: 'app-exercicio',
@@ -14,7 +12,8 @@ import { javascript } from "@codemirror/lang-javascript"
 })
 export class ExercicioComponent implements OnInit {
   protected exercicio: IExercicio | undefined;
-  protected vexibeLoading = false;
+  protected resultadosRuntime: IRuntime[] = []
+  protected exibeLoading = false;
   protected exibePontuacao = false;
   protected exibeException = false;
   protected exibeInstrucoes = true;
@@ -28,13 +27,24 @@ export class ExercicioComponent implements OnInit {
     private router: Router
   ){}
 
- 
-
   ngOnInit(): void {
     this.route.params.subscribe((params: any) => {
-      this._obterExercicio(params.idExercicio);
+      this._reinicializaPagina(params);
+    
     });
     
+  }
+
+  private _reinicializaPagina(params: any){
+    this.exibeLoading = false;
+    this.exibePontuacao = false;
+    this.exibeException = false;
+    this.exibeInstrucoes = true;
+    this.exibeCodigo = false;
+    this.percentualPontuacao = 0;
+    this.exception = undefined;
+    this.resultadosRuntime = [];
+    this._obterExercicio(params.idExercicio);
   }
 
   private _obterExercicio(idExercicio: string){
@@ -46,8 +56,8 @@ export class ExercicioComponent implements OnInit {
     }
   }
 
-  obterResultados(resultado: number){
-    this.percentualPontuacao = resultado;
+  obterResultados(resultado: IRuntime[]){
+    this.resultadosRuntime = resultado;
     this.exibePontuacao = true;
   }
 

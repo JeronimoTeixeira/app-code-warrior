@@ -7,7 +7,7 @@
   </div>
 </div>
 
-<div class="content container-100" style="height: 300px;">
+<div class="content container-100" style="height: 400px;">
 
   <div [class.hidden]="!exibeInstrucoes" id="card-instrucao" class="card">
     <div class="card-content">
@@ -25,7 +25,16 @@
     </div>
     <div [class.hidden]="!exibePontuacao" id="card-display" class="card">
       <div class="card-content">
-        <p class="card-text">{{percentualPontuacao}}%</p>
+        <ul class="list">
+          @for (runTime of resultadosRuntime; track $index){
+            <li>
+              Exemplo: {{runTime.run}} 
+              <br>
+              Resultado: {{runTime.resultado}}
+              <hr class="list-divider">
+            </li>
+          }
+        </ul>
       </div>
     </div>
     <div [class.hidden]="!exibeException" id="card-display" class="card">

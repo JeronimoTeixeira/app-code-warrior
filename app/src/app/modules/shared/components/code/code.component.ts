@@ -1,8 +1,8 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, Output, ViewChild, WritableSignal, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { EditorView , minimalSetup, basicSetup} from 'codemirror';
 import { javascript } from "@codemirror/lang-javascript"
 import { IExercicio } from '../../interfaces/exercicio.interface';
+import { IRuntime } from '../../interfaces/runtime.interface';
 
 
 @Component({
@@ -15,7 +15,7 @@ export class CodeComponent implements AfterViewInit {
   private editorViewCodeMirror: EditorView | undefined;
 
   @Input() exercicio: IExercicio | undefined;
-  @Output() resultados = new EventEmitter<number>();
+  @Output() resultados = new EventEmitter<IRuntime[]>();
   @Output() exception = new EventEmitter<string>();
   
   
@@ -32,17 +32,20 @@ export class CodeComponent implements AfterViewInit {
 
   runCodigo(){
     const content: string | undefined = this.editorViewCodeMirror?.state.doc.toString();
+    let runTime: IRuntime[] = []
+    console.log(this.exercicio)
     if(content && this.exercicio){
-      // this.exibeLoading = true;
-      let pontuacaoMaxima = this.exercicio.exemplos.length;
-      let pontuacaoAtual = 0;
       let exception: string | undefined;
       const nomeFuncao = this.exercicio.nomeFuncao;
       for(const exemplo of this.exercicio.exemplos){
         const runner = content + nomeFuncao + exemplo.entrada;
         try {
           const resultado =  eval(runner);
-          pontuacaoAtual = resultado == exemplo.saida ? pontuacaoAtual + 1 : pontuacaoAtual;
+          runTime.push({
+            run: nomeFuncao+exemplo.entrada,
+            resultado: resultado,
+            sucesso: resultado.toString() == exemplo.saida
+          })
         } catch (error) {
           exception = error?.toString();
           break;
@@ -50,7 +53,7 @@ export class CodeComponent implements AfterViewInit {
       } 
 
       if(exception) this.exception.emit(exception);
-      else this.resultados.emit(pontuacaoAtual * 100/pontuacaoMaxima)
+      else this.resultados.emit(runTime);
       
     } 
 

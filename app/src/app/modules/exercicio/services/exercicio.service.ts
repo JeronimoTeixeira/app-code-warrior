@@ -33,7 +33,7 @@ export class ExercicioService {
     {
       "id": 3,
       "enunciado": "Escreva uma função chamada contaVogais que recebe uma string e retorna o número de vogais presentes nela.",
-      "nomeFuncao": "calculadora",
+      "nomeFuncao": "contaVogais",
       "exemplos": [
         {"entrada": "('hello')", "saida": "2"},
         {"entrada": "('why')", "saida": "0"}
@@ -43,10 +43,10 @@ export class ExercicioService {
     {
       "id": 4,
       "enunciado": "Crie uma função chamada celsiusParaFahrenheit que converte uma temperatura em Celsius para Fahrenheit utilizando a fórmula F = C * 9/5 + 32.",
-      "nomeFuncao": "calculadora",
+      "nomeFuncao": "celsiusParaFahrenheit",
       "exemplos": [
         {"entrada": "(0)", "saida": "32"},
-        {"entrada": "(-30)", "saida": "22"},
+        {"entrada": "(-30)", "saida": "-22"},
         {"entrada": "(100)", "saida": "212"}
       ],
       "notas": "Use operações aritméticas básicas para realizar a conversão."
@@ -54,7 +54,7 @@ export class ExercicioService {
     {
       "id": 5,
       "enunciado": "Implemente uma função chamada maximo que recebe três números e retorna o maior deles.",
-      "nomeFuncao": "calculadora",
+      "nomeFuncao": "maximo",
       "exemplos": [
         {"entrada": "(1, 2, 3)", "saida": "3"},
         {"entrada": "(10, 20, 5)", "saida": "20"}
