@@ -90,7 +90,7 @@ body {
 }
 
 .list li {
-  color: #BEAFC2; /* Purple Haze */
+  // color: #BEAFC2; /* Purple Haze */
   padding: 1rem 0;
 }
 
@@ -100,4 +100,11 @@ body {
   border-top: 1px solid rgba(201, 195, 238, 0.5); /* Roxo com opacidade reduzida */
   margin: 1rem 0; /* Adicionando margem superior e inferior */
   padding: 0;
+}
+
+.list-view-error{
+  color: #a82d2d;
+}
+.list-view-sucesso{
+  color: #2da84c;
 }

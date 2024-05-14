@@ -27,12 +27,25 @@
       <div class="card-content">
         <ul class="list">
           @for (runTime of resultadosRuntime; track $index){
-            <li>
-              Exemplo: {{runTime.run}} 
-              <br>
-              Resultado: {{runTime.resultado}}
-              <hr class="list-divider">
-            </li>
+            @if(runTime.sucesso){
+              <li class="list-view-sucesso">
+                <span>Sucesso :D</span>
+                <br>
+                Exemplo: {{runTime.run}} 
+                <br>
+                Resultado: {{runTime.resultado}}
+              </li>
+            }
+            @else{
+              <li class="list-view-error">
+                <span>Erro :(</span>
+                <br>
+                Exemplo: {{runTime.run}} 
+                <br>
+                Resultado: {{runTime.resultado}}
+              </li>
+            }            
+            <hr class="list-divider">   
           }
         </ul>
       </div>
