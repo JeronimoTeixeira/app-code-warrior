@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main
+      - feature/*
 
 jobs:
   build:
@@ -16,13 +16,17 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v1
       with:
-        node-version: 14
+        node-version: 18
 
     - name: Install Dependencias
-      run: cd app & npm install
+      run: |
+            cd app
+            npm install
 
     - name: Build Angular App
-      run: cd app & npm run build
+      run: |
+        cd app
+        npm run build
 
     - name: Deploy GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
