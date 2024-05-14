@@ -13,15 +13,15 @@ import { javascript } from "@codemirror/lang-javascript"
   styleUrl: './exercicio.component.scss',
 })
 export class ExercicioComponent implements OnInit {
-  exercicio: IExercicio | undefined;
-  exibeLoading = false;
-  exibePontuacao = false;
-  exibeException = false;
-  exibeInstrucoes = true;
-  exibeCodigo = false;
+  protected exercicio: IExercicio | undefined;
+  protected vexibeLoading = false;
+  protected exibePontuacao = false;
+  protected exibeException = false;
+  protected exibeInstrucoes = true;
+  protected exibeCodigo = false;
 
-  percentualPontuacao: number = 0;
-  exception: string | undefined;
+  protected percentualPontuacao: number = 0;
+  protected exception: string | undefined;
 
   constructor( private _exercicioService: ExercicioService,
     private route: ActivatedRoute,
@@ -37,7 +37,6 @@ export class ExercicioComponent implements OnInit {
     
   }
 
-
   private _obterExercicio(idExercicio: string){
     if(idExercicio){
       this.exercicio = this._exercicioService.obterExemploPorId(Number(idExercicio))
@@ -47,43 +46,26 @@ export class ExercicioComponent implements OnInit {
     }
   }
 
-  // runCodigo(){
-  //   const content: string | undefined = this.editorViewCodeMirror?.state.doc.toString();
-  //   if(content && this.exercicio){
-  //     this.exibeLoading = true;
-  //     let pontuacaoMaxima = this.exercicio.exemplos.length;
-  //     let pontuacaoAtual = 0;
-  //     let exception: string | undefined;
-  //     const nomeFuncao = this.exercicio.nomeFuncao;
-  //     for(const exemplo of this.exercicio.exemplos){
-  //       const runner = content + nomeFuncao + exemplo.entrada;
-  //       try {
-  //         const resultado =  eval(runner);
-  //         pontuacaoAtual = resultado == exemplo.saida ? pontuacaoAtual + 1 : pontuacaoAtual;
-  //       } catch (error) {
-  //         exception = error?.toString();
-  //         break;
-  //       }
-  //     } 
-  //     this.percentualPontuacao = pontuacaoAtual * 100/pontuacaoMaxima;
-  //     this.exception = exception;
-  //     this.exibeLoading = false;
-  //     this.exibePontuacao = !exception;
-  //     this.exibeException = !!exception;
-  //   } 
+  obterResultados(resultado: number){
+    this.percentualPontuacao = resultado;
+    this.exibePontuacao = true;
+  }
 
-  // }
-
-  tentarNovamente(){
-    this.exibePontuacao = false;
-    this.exibeException = false;
+  obterException(exception: string){
+    this.exception = exception;
+    this.exibeException = true;
   }
 
   proximaQuestao(){
     let idExercicioAtual = this.exercicio?.id || 0;
-    console.log(idExercicioAtual)
-    console.log(`/exercicio/${idExercicioAtual++}`)
-    this.router.navigate(['/exercicio', idExercicioAtual++]);
+    idExercicioAtual++;
+    this.router.navigate([`/exercicio/${idExercicioAtual}`]);
+  }
+
+  voltarQuestao(){
+    let idExercicioAtual = this.exercicio?.id || 0;
+    idExercicioAtual--;
+    this.router.navigate([`/exercicio/${idExercicioAtual}`]);
   }
 
   navegaParaIntrucoes(){

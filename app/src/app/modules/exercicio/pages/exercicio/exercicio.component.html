@@ -9,29 +9,37 @@
 
 <div class="content container-100" style="height: 300px;">
 
-  @if(exibeInstrucoes){
-    <div id="card-instrucao" class="card" *ngIf="exibeInstrucoes">
+  <div [class.hidden]="!exibeInstrucoes" id="card-instrucao" class="card">
+    <div class="card-content">
+      <h3 class="card-title">Instruções</h3>
+      <p class="card-text">{{exercicio?.enunciado}}</p>
+    </div>
+  </div>
+  <div [class.hidden]="!exibeCodigo" class="container-100 justify-content-between" style="height: 100%">
+    <div id="card-codigo" class="card">
       <div class="card-content">
-        <h3 class="card-title">Título do Card</h3>
-        <p class="card-text">Texto do card vai aqui. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        <h3 class="card-title">Codigo</h3>
+        <app-code [exercicio]="exercicio" (resultados)="obterResultados($event)" (exception)="obterException($event)">
+        </app-code>
       </div>
     </div>
-  }
-  @else{
-    <div class="container-100 justify-content-between" style="height: 100%" *ngIf="exibeCodigo">
-      <div id="card-codigo" class="card">
-        <div class="card-content">
-          <h3 class="card-title">Codigo</h3>
-          <app-code></app-code>
-        </div>
-      </div>
-      <div id="card-display" class="card">
-        <div class="card-content">
-          <p class="card-text">Texto do card vai aqui. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </div>
+    <div [class.hidden]="!exibePontuacao" id="card-display" class="card">
+      <div class="card-content">
+        <p class="card-text">{{percentualPontuacao}}%</p>
       </div>
     </div>
-  }
+    <div [class.hidden]="!exibeException" id="card-display" class="card">
+      <div class="card-content">
+        <p class="card-text">{{exception}}</p>
+      </div>
+    </div>
+  </div>
+</div>
 
+<div class="container-100 justify-content-between">
+  @if(exercicio?.id != 1){
+    <button class="button container-100 mr-2 ml-2" (click)="voltarQuestao()">Voltar</button>
+  }
+  <button class="button container-100 mr-2 ml-2" (click)="proximaQuestao()">Próxima</button>
 </div>
 

@@ -2,6 +2,10 @@
 
 @import "../../../../app.component.scss";
 
+.hidden{
+  display: none;
+}
+
 body {
   padding-top: 5rem; /* Altura do menu */
 }
