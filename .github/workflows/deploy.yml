@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - feature/*
+      - main
 
 jobs:
   build:
@@ -32,4 +33,4 @@ jobs:
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.APP_CODE_WARRIOR }}
-        publish_dir: ./dist/app-code-warrior/browser  # ajuste o caminho do diretório de construção do seu projeto Angular
+        publish_dir: ./dist/app-code-warrior/browser
