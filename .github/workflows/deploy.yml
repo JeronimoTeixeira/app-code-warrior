@@ -33,4 +33,4 @@ jobs:
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.APP_CODE_WARRIOR }}
-        publish_dir: .app/dist/app-code-warrior/browser
+        publish_dir: ./app/dist/app-code-warrior/browser
