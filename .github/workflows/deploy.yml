@@ -29,22 +29,9 @@ jobs:
         cd app
         npm run build
 
-    - name: Create 404 Page Redirect
+    - name: Copy Index HTML to 404 HTML
       run: |
-        echo "<!DOCTYPE html>" > app/dist/app-code-warrior/browser/404.html
-        echo "<html lang=\"en\">" >> app/dist/app-code-warrior/browser/404.html
-        echo "<head>" >> app/dist/app-code-warrior/browser/404.html
-        echo "  <meta charset=\"UTF-8\">" >> app/dist/app-code-warrior/browser/404.html
-        echo "  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">" >> app/dist/app-code-warrior/browser/404.html
-        echo "  <title>Page Not Found</title>" >> app/dist/app-code-warrior/browser/404.html
-        echo "</head>" >> app/dist/app-code-warrior/browser/404.html
-        echo "<body>" >> app/dist/app-code-warrior/browser/404.html
-        echo "  <script>" >> app/dist/app-code-warrior/browser/404.html
-        echo "    // Redirect to index.html" >> app/dist/app-code-warrior/browser/404.html
-        echo "    window.location.href = 'index.html';" >> app/dist/app-code-warrior/browser/404.html
-        echo "  </script>" >> app/dist/app-code-warrior/browser/404.html
-        echo "</body>" >> app/dist/app-code-warrior/browser/404.html
-        echo "</html>" >> app/dist/app-code-warrior/browser/404.html
+        cp app/dist/app-code-warrior/browser/index.html app/dist/app-code-warrior/browser/404.html
 
     - name: Deploy GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
