@@ -3,6 +3,7 @@ import { EditorView , minimalSetup, basicSetup} from 'codemirror';
 import { javascript } from "@codemirror/lang-javascript"
 import { IExercicio } from '../../interfaces/exercicio.interface';
 import { IRuntime } from '../../interfaces/runtime.interface';
+import { RunCodeService } from '../../services/run-code/run-code.service';
 
 
 @Component({
@@ -17,6 +18,12 @@ export class CodeComponent implements AfterViewInit {
   @Input() exercicio: IExercicio | undefined;
   @Output() resultados = new EventEmitter<IRuntime[]>();
   @Output() exception = new EventEmitter<string>();
+
+  constructor(private runCodeService: RunCodeService){
+    runCodeService.runCodeObs.subscribe( ()=>{
+      this.runCodigo();
+    })
+  }
   
   
   ngAfterViewInit(): void {

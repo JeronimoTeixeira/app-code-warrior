@@ -97,6 +97,11 @@
   margin-top: 1rem;
   transition: background-color 0.3s ease;
   cursor: pointer;
+  width: 200px;
+  &-run{
+    @extend .button;  
+    background-color: #5acd86; /* Roxo */
+  }
 }
 
 .button:hover {

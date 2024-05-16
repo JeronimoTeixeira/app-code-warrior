@@ -7,7 +7,7 @@
   </div>
 </div>
 
-<div class="content container-100" style="height: 400px;">
+<div class="content container-100" style="height: 330px;">
 
   <div [class.hidden]="!exibeInstrucoes" id="card-instrucao" class="card">
     <div class="card-content">
@@ -58,10 +58,17 @@
   </div>
 </div>
 
-<div class="container-100 justify-content-between">
-  @if(exercicio?.id != 1){
-    <button class="button container-100 mr-2 ml-2" (click)="voltarQuestao()">Voltar</button>
+<div class="flex">
+
+  @if(exibeCodigo){ 
+    <button class="button-run mr-3 ml-3" (click)="runCodigo()">Run Codigo</button>
   }
-  <button class="button container-100 mr-2 ml-2" (click)="proximaQuestao()">Próxima</button>
+  
+  <div>    
+    @if(exercicio?.id != 1){
+      <button class="button mr-3 ml-3" (click)="voltarQuestao()">Voltar</button>
+    }
+    <button class="button mr-3 ml-3" (click)="proximaQuestao()">Próxima</button>
+  </div>
 </div>
 

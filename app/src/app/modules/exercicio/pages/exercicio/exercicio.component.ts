@@ -4,6 +4,7 @@ import { ExercicioService } from '../../services/exercicio.service';
 import { IExercicio } from 'src/app/modules/shared/interfaces/exercicio.interface';
 import { ActivatedRoute, Router } from '@angular/router';
 import { IRuntime } from 'src/app/modules/shared/interfaces/runtime.interface';
+import { RunCodeService } from 'src/app/modules/shared/services/run-code/run-code.service';
 
 @Component({
   selector: 'app-exercicio',
@@ -24,7 +25,8 @@ export class ExercicioComponent implements OnInit {
 
   constructor( private _exercicioService: ExercicioService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private runCodeService: RunCodeService
   ){}
 
   ngOnInit(): void {
@@ -88,5 +90,8 @@ export class ExercicioComponent implements OnInit {
     this.exibeCodigo = true;
   }
 
+  runCodigo(){
+    this.runCodeService.emitRunCode();
+  }
 
 }
