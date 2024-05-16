@@ -7,61 +7,87 @@
   </div>
 </div>
 
-<div class="content container-100" style="height: 400px;">
+<div class="content container-100 align-items-start">
 
-  <div [class.hidden]="!exibeInstrucoes" id="card-instrucao" class="card">
-    <div class="card-content">
-      <h3 class="card-title">Instruções</h3>
-      <p class="card-text">{{exercicio?.enunciado}}</p>
-    </div>
-  </div>
-  <div [class.hidden]="!exibeCodigo" class="container-100 justify-content-between" style="height: 100%">
-    <div id="card-codigo" class="card">
-      <div class="card-content">
-        <h3 class="card-title">Codigo</h3>
-        <app-code [exercicio]="exercicio" (resultados)="obterResultados($event)" (exception)="obterException($event)">
-        </app-code>
+  <div [class.hidden]="!exibeInstrucoes" class="flex align-items-start justify-content-between"
+    style="height: 100%; width: 100%;">
+    <div class="container flex-column mr-3 ml-3" style="flex-grow: 1; max-width: 48%; min-width: 48%;">
+      <div [class.hidden]="!exibeInstrucoes" id="card-instrucao" class="card" style="min-height: 20rem; max-height: 20rem;">
+        <div class="card-content">
+          <h3 class="card-title">Instruções</h3>
+          <p class="card-text">{{exercicio?.enunciado}}</p>
+        </div>
       </div>
     </div>
-    <div [class.hidden]="!exibePontuacao" id="card-display" class="card">
-      <div class="card-content">
-        <ul class="list">
-          @for (runTime of resultadosRuntime; track $index){
+    
+    <div class="container flex-column mr-3 ml-3" style="flex-grow: 1; max-width: 48%; min-width: 48%;">
+      <div [class.hidden]="exibePontuacao || exibeException" class="card" style="min-height: 20rem; max-height: 20rem;">
+        <div class="card-content">
+          <div class="flex flex-column align-items-center">
+            <p class="card-text">Aqui você voa</p>
+            <img class="container-100" style="height: 200px; width: 200px;" src="../../../../../assets/images/astronauta.jpg" alt="">
+          </div>
+        </div>
+      </div>
+      <div class="align-items-end flex flex-column" style="width: 100%;">
+        @if(exercicio?.id != 1){
+        <button class="button" (click)="voltarQuestao()">Voltar</button>
+        }
+        <button class="button" (click)="proximaQuestao()">Próxima</button>
+      </div>
+    </div>
+  </div>
+  <div [class.hidden]="!exibeCodigo" class="flex align-items-start justify-content-between"
+    style="height: 100%; width: 100%;">
+    <app-code [exercicio]="exercicio" style="flex-grow: 1; max-width: 48%; min-width: 48%;"
+      (resultados)="obterResultados($event)" (exception)="obterException($event)">
+    </app-code>
+
+
+    <div class="container flex-column mr-3 ml-3" style="flex-grow: 1; max-width: 48%; min-width: 48%;">
+      <div [class.hidden]="exibePontuacao || exibeException" class="card" style="min-height: 20rem; max-height: 20rem;">
+        <div class="card-content">
+          CARD DE ESPERA
+        </div>
+      </div>
+      <div [class.hidden]="!exibePontuacao" class="card" style="min-height: 20rem; max-height: 20rem;">
+        <div class="card-content">
+          <ul class="list">
+            @for (runTime of resultadosRuntime; track $index){
             @if(runTime.sucesso){
-              <li class="list-view-sucesso">
-                <span>Sucesso :D</span>
-                <br>
-                Exemplo: {{runTime.run}} 
-                <br>
-                Resultado: {{runTime.resultado}}
-              </li>
+            <li class="list-view-sucesso">
+              <span>Sucesso :D</span>
+              <br>
+              Exemplo: {{runTime.run}}
+              <br>
+              Resultado: {{runTime.resultado}}
+            </li>
             }
             @else{
-              <li class="list-view-error">
-                <span>Erro :(</span>
-                <br>
-                Exemplo: {{runTime.run}} 
-                <br>
-                Resultado: {{runTime.resultado}}
-              </li>
-            }            
-            <hr class="list-divider">   
-          }
-        </ul>
+            <li class="list-view-error">
+              <span>Erro :(</span>
+              <br>
+              Exemplo: {{runTime.run}}
+              <br>
+              Resultado: {{runTime.resultado}}
+            </li>
+            }
+            <hr class="list-divider">
+            }
+          </ul>
+        </div>
       </div>
-    </div>
-    <div [class.hidden]="!exibeException" id="card-display" class="card">
-      <div class="card-content">
-        <p class="card-text">{{exception}}</p>
+      <div [class.hidden]="!exibeException" class="card" style="min-height: 20rem; max-height: 20rem;">
+        <div class="card-content">
+          <p class="card-text">{{exception}}</p>
+        </div>
+      </div>
+      <div class="align-items-end flex flex-column" style="width: 100%;">
+        @if(exercicio?.id != 1){
+        <button class="button" (click)="voltarQuestao()">Voltar</button>
+        }
+        <button class="button" (click)="proximaQuestao()">Próxima</button>
       </div>
     </div>
   </div>
 </div>
-
-<div class="container-100 justify-content-between">
-  @if(exercicio?.id != 1){
-    <button class="button container-100 mr-2 ml-2" (click)="voltarQuestao()">Voltar</button>
-  }
-  <button class="button container-100 mr-2 ml-2" (click)="proximaQuestao()">Próxima</button>
-</div>
-

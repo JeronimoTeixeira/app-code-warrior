@@ -1,2 +1,15 @@
-<div #editor></div>
-<button class="button container-100" (click)="runCodigo()">Run Codigo</button>
+
+
+
+<div class="container flex-column mr-3 ml-3" >
+    <div id="card-codigo" class="card" style="min-height: 15rem; max-height: 15rem;">
+        <div class="card-content">
+            <h3 class="card-title">Codigo</h3>
+            <div class="editor-code" #editor></div>
+        </div>
+    </div>
+    
+    <div class="align-items-end flex flex-column" style="width: 100%;">    
+        <button class="button" (click)="runCodigo()">Run Codigo</button>
+    </div>
+</div>

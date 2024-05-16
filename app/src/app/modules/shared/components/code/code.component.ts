@@ -25,7 +25,7 @@ export class CodeComponent implements AfterViewInit {
 
   private _buildarCodeMirror(){
     this.editorViewCodeMirror = new EditorView({
-      extensions: [basicSetup, javascript() ],
+      extensions: [basicSetup, javascript()],
       parent: this.editorCodigo.nativeElement,
     });
   }
