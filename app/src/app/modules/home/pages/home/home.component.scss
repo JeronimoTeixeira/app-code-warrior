@@ -1,0 +1,25 @@
+@import "../../../../app.component.scss";
+
+.card {
+  @extend .ml-3;
+  @extend .mr-3;
+  background-color: #fff; /* Branco */
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: auto;
+  width: 100%;
+  height: 100%;
+}
+
+.card-content {
+  padding: 1.5rem;
+}
+
+.card-title {
+  color: #6A5ACD; /* Roxo */
+  margin-top: 0;
+}
+
+.card-text {
+  color: #674d6e; /* Purple Haze */
+}
